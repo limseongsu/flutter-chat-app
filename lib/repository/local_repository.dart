@@ -4,7 +4,7 @@ import 'package:chat_app/repository/repository.dart';
 class LocalRepository extends Repository {
   @override
   Future<List<Chat>> getChatList() async {
-    Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 1));
 
     return [
       Chat('홍길동', null, 'hello world', 100234234234, 'aaa@aaa.com'),
