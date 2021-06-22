@@ -14,7 +14,7 @@ class MyChatItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text(datemillisecondsToSring(chat.time)),
+          Text(chat.time.toDateString()),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
