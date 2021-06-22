@@ -63,7 +63,50 @@ class _ChatPageState extends State<ChatPage> {
                     );
                   }),
             ),
-            TextField(),
+            Column(
+              children: [
+                TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    labelText: 'Message를 입력하세요'
+                  ),
+                ),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.email),
+                    ),
+                    IconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.email),
+                    ),
+                    IconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.email),
+                    ),
+                    IconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.email),
+                    ),
+                    IconButton(
+                      onPressed: null,
+                      icon: Icon(Icons.email),
+                    ),
+                    Flexible(child: Container()),
+                    TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15)
+                          ),
+                          child: Text('Send'),
+                        ))
+                  ],
+                ),
+              ],
+            ),
           ],
         ),
       ),
