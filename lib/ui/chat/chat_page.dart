@@ -17,6 +17,7 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final myEmail = 'bbb@aaa.com';
   TextEditingController _controller = TextEditingController();
+  final _scrollController = ScrollController();
 
   void initState() {
     super.initState();
@@ -26,6 +27,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void dispose() {
     _controller.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -46,6 +48,7 @@ class _ChatPageState extends State<ChatPage> {
               child: viewModel.isLoading
                   ? Center(child: CircularProgressIndicator())
                   : ListView.builder(
+                      controller: _scrollController,
                       shrinkWrap: true,
                       itemCount: viewModel.chatList.length,
                       itemBuilder: (context, index) {
@@ -93,6 +96,14 @@ class _ChatPageState extends State<ChatPage> {
                           viewModel.pushMessage(
                             myEmail,
                             _controller.text,
+                          );
+                          // 입력 창 초기화
+                          _controller.clear();
+                          // 메세지 입력 후 맨 밑으로 스크롤
+                          _scrollController.animateTo(
+                            _scrollController.position.maxScrollExtent,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.easeOut,
                           );
                         },
                         child: Container(
