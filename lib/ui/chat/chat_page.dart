@@ -31,7 +31,7 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<ChatViewModel>();
+    final viewModel = context.watch<ChatViewModel>();
     return Scaffold(
       appBar: AppBar(
         title: Text(''),

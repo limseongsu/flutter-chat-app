@@ -1,3 +1,4 @@
+import 'package:chat_app/repository/fake_repository.dart';
 import 'package:chat_app/ui/login/login_page.dart';
 import 'package:chat_app/viewmodel/chat_view_model.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,7 @@ import 'package:provider/provider.dart';
 void main() {
   runApp(MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: ChatViewModel()),
+        ChangeNotifierProvider.value(value: ChatViewModel(FakeRepository())),
       ],
       child: MyApp()));
 }
