@@ -15,10 +15,12 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final myEmail = 'bbb@aaa.com';
   final Repository repository = FakeRepository();
+  TextEditingController _controller = TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 
   @override
@@ -66,9 +68,10 @@ class _ChatPageState extends State<ChatPage> {
             Column(
               children: [
                 TextField(
+                  controller: _controller,
                   decoration: InputDecoration(
-                    border: InputBorder.none,
-                    labelText: 'Message를 입력하세요'
+                      border: InputBorder.none,
+                      labelText: 'Message를 입력하세요'
                   ),
                 ),
                 Row(
@@ -95,11 +98,17 @@ class _ChatPageState extends State<ChatPage> {
                     ),
                     Flexible(child: Container()),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          repository
+                              .pushMessage(myEmail, _controller.text, DateTime.now().millisecond,
+                          ).whenComplete(() {
+                            //setstate를 쓰고싶음.
+                          });
+                        },
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15)
+                              borderRadius: BorderRadius.circular(15)
                           ),
                           child: Text('Send'),
                         ))
