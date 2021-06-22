@@ -1,7 +1,7 @@
 import 'package:chat_app/model/chat.dart';
 import 'package:chat_app/repository/repository.dart';
 
-class FakeRepository extends Repository {
+class FakeRepository extends Repository<Chat> {
   final List<Chat> items = [
     Chat('홍길동', null, 'hello world', 100234234234, 'aaa@aaa.com'),
     Chat(
@@ -21,14 +21,20 @@ class FakeRepository extends Repository {
   }
 
   @override
-  Future pushMessage(String email, String message, int time) async {
+  Future add(Chat item) async {
     await Future.delayed(Duration(microseconds: 10));
     // 서버랑 왔다리 갔다리 해서 name, profileurl을 얻음
     items.add(Chat(
-        '임성수',
-        'https://yt3.ggpht.com/ytc/AAUvwniqTHfAb4NIjTwa5_G1BQmABidGaQ5SZc3AzOQF=s900-c-k-c0x00ffffff-no-rj',
-        message,
-        time,
-        email));
+        item.name,
+        item.profileUrl,
+        item.message,
+        item.time,
+        item.email));
+  }
+
+  @override
+  Future<List<Chat>> getAll() async {
+    await Future.delayed(Duration(seconds: 1));
+    return items;
   }
 }

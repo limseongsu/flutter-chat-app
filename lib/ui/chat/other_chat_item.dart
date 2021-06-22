@@ -1,4 +1,5 @@
 import 'package:chat_app/model/chat.dart';
+import 'package:chat_app/util/data_util.dart';
 import 'package:flutter/material.dart';
 
 class OtherChatItem extends StatelessWidget {
@@ -36,7 +37,7 @@ class OtherChatItem extends StatelessWidget {
                     SizedBox(
                       width: 8,
                     ),
-                    Text('${chat.time}'),
+                    Text(datemillisecondsToSring(chat.time)),
                   ],
                 ),
                 Container(

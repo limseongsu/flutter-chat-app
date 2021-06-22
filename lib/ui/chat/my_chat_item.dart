@@ -1,4 +1,5 @@
 import 'package:chat_app/model/chat.dart';
+import 'package:chat_app/util/data_util.dart';
 import 'package:flutter/material.dart';
 
 class MyChatItem extends StatelessWidget {
@@ -13,7 +14,7 @@ class MyChatItem extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Text('${chat.time}'),
+          Text(datemillisecondsToSring(chat.time)),
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
