@@ -1,6 +1,4 @@
 import 'package:chat_app/model/chat.dart';
-import 'package:chat_app/repository/fake_repository.dart';
-import 'package:chat_app/repository/repository.dart';
 import 'package:chat_app/ui/chat/my_chat_item.dart';
 import 'package:chat_app/ui/chat/other_chat_item.dart';
 import 'package:chat_app/viewmodel/chat_view_model.dart';
