@@ -8,19 +8,22 @@ class LoginViewModel extends ChangeNotifier{
   LoginViewModel(this.repository);
 
 
-  get isLogin => repository.user != null;
+ bool isLogin = false;
 
 
   void login() {
 
-    repository.login().whenComplete(() {
-
+    repository.login().then((user) {
+      if(user != null) {
+        isLogin = true;
+      }
     notifyListeners();
 
     });
 
   }
   void logout() {
+    isLogin = false;
     repository.logout();
     notifyListeners();
 
